@@ -2,8 +2,8 @@
  * @Author: xiayuan 1137542776@qq.com
  * @Date: 2024-03-03 19:59:54
  * @LastEditors: xiayuan 1137542776@qq.com
- * @LastEditTime: 2024-03-04 23:08:25
- * @FilePath: \MDK-ARM\all\AS5047.c
+ * @LastEditTime: 2024-05-10 21:44:49
+ * @FilePath: \MDK-ARM\source_file\AS5047.c
  * @Description: 
  * v1.0 实现基本的读取角度功能，可以开启均值滤波 3.4.2024
  * 
@@ -19,9 +19,9 @@
 //一个板子需要读多个数据，在这里扩大数组和定义SPI、CS脚
 as5047_t as5047[4] = {  
 {
-    .cs = {GPIOB, GPIO_PIN_11},
+    .cs = {GPIOA, GPIO_PIN_15},
     .hspi = &hspi3,
-	.use_filter = false,
+	.use_filter = true,
 },
 };
 
@@ -95,11 +95,11 @@ uint16_t AS5047_read_reg (uint16_t add, as5047_t* as5047) {
 	add |= 0x4000;	
 	if(__parity_bit_calculate(add)==1) add=add|0x8000; 
 	data=SPI_ReadWrite_OneByte(ERRFL|0x4000, target_hspi, cs_port, cs_pin);  //每次读一个错误位清除错误标志
-	HAL_Delay(1);
+	Delay_us(10);
 	data=SPI_ReadWrite_OneByte(add, target_hspi, cs_port, cs_pin);	//接收错误位数据，发送读取寄存器数据的命令
-	HAL_Delay(1);
+	Delay_us(10);
 	data=SPI_ReadWrite_OneByte(NOP|0x4000, target_hspi, cs_port, cs_pin);     //接收想读的寄存器的数据，发送空指令
-	HAL_Delay(1);
+	Delay_us(10);
 	data &=0x3fff;  //除去校验位和错误位 
 	return data;
 }
@@ -115,3 +115,41 @@ void as5047_read_angle_routine (as5047_t* as5047) {
 	}
     as5047->angle_now = __as5047_angle_transform(raw_data);  //读14位原始数据，然后角度转换
 }
+
+__IO float usDelayBase;
+void usDelayTest(void) {
+  __IO uint32_t firstms, secondms;
+  __IO uint32_t counter = 0;
+
+  firstms = HAL_GetTick()+1;
+  secondms = firstms+1;
+
+  while(uwTick!=firstms) ;
+
+  while(uwTick!=secondms) counter++;
+
+  usDelayBase = ((float)counter)/1000;
+}
+
+void usDelayOptimize(void) {
+  __IO uint32_t firstms, secondms;
+  __IO float coe = 1.0;
+
+  firstms = HAL_GetTick();
+  Delay_us(1000000) ;
+  secondms = HAL_GetTick();
+
+  coe = ((float)1000)/(secondms-firstms);
+  usDelayBase = coe*usDelayBase;
+}
+
+void Delay_us(uint32_t Delay) {
+  __IO uint32_t delayReg;
+  __IO uint32_t usNum = (uint32_t)(Delay*usDelayBase);
+
+  delayReg = 0;
+  while(delayReg!=usNum) delayReg++;
+}
+
+
+
