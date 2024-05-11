@@ -3,15 +3,15 @@
         {
             "name": "g431_can_encoder_develop",
             "includePath": [
-                "c:\\Users\\MikanseiP\\Desktop\\projectfiles\\cubeproject\\G431CBU6\\g431_can_encoder_develop\\Core\\Inc",
-                "c:\\Users\\MikanseiP\\Desktop\\projectfiles\\cubeproject\\G431CBU6\\g431_can_encoder_develop\\Drivers\\STM32G4xx_HAL_Driver\\Inc",
-                "c:\\Users\\MikanseiP\\Desktop\\projectfiles\\cubeproject\\G431CBU6\\g431_can_encoder_develop\\Drivers\\STM32G4xx_HAL_Driver\\Inc\\Legacy",
-                "c:\\Users\\MikanseiP\\Desktop\\projectfiles\\cubeproject\\G431CBU6\\g431_can_encoder_develop\\Drivers\\CMSIS\\Device\\ST\\STM32G4xx\\Include",
-                "c:\\Users\\MikanseiP\\Desktop\\projectfiles\\cubeproject\\G431CBU6\\g431_can_encoder_develop\\Drivers\\CMSIS\\Include",
-                "c:\\Users\\MikanseiP\\Desktop\\projectfiles\\cubeproject\\G431CBU6\\g431_can_encoder_develop\\MDK-ARM\\source_file",
-                "c:\\Users\\MikanseiP\\Desktop\\projectfiles\\cubeproject\\G431CBU6\\g431_can_encoder_develop\\MDK-ARM",
-                "c:\\Users\\MikanseiP\\Desktop\\projectfiles\\cubeproject\\G431CBU6\\g431_can_encoder_develop\\Core\\Src",
-                "c:\\Users\\MikanseiP\\Desktop\\projectfiles\\cubeproject\\G431CBU6\\g431_can_encoder_develop\\Drivers\\STM32G4xx_HAL_Driver\\Src"
+                "c:\\Users\\MikanseiP\\Desktop\\projectfiles\\my_project\\g431_can_encoder_develop\\Core\\Inc",
+                "c:\\Users\\MikanseiP\\Desktop\\projectfiles\\my_project\\g431_can_encoder_develop\\Drivers\\STM32G4xx_HAL_Driver\\Inc",
+                "c:\\Users\\MikanseiP\\Desktop\\projectfiles\\my_project\\g431_can_encoder_develop\\Drivers\\STM32G4xx_HAL_Driver\\Inc\\Legacy",
+                "c:\\Users\\MikanseiP\\Desktop\\projectfiles\\my_project\\g431_can_encoder_develop\\Drivers\\CMSIS\\Device\\ST\\STM32G4xx\\Include",
+                "c:\\Users\\MikanseiP\\Desktop\\projectfiles\\my_project\\g431_can_encoder_develop\\Drivers\\CMSIS\\Include",
+                "c:\\Users\\MikanseiP\\Desktop\\projectfiles\\my_project\\g431_can_encoder_develop\\MDK-ARM\\source_file",
+                "c:\\Users\\MikanseiP\\Desktop\\projectfiles\\my_project\\g431_can_encoder_develop\\MDK-ARM",
+                "c:\\Users\\MikanseiP\\Desktop\\projectfiles\\my_project\\g431_can_encoder_develop\\Core\\Src",
+                "c:\\Users\\MikanseiP\\Desktop\\projectfiles\\my_project\\g431_can_encoder_develop\\Drivers\\STM32G4xx_HAL_Driver\\Src"
             ],
             "defines": [
                 "USE_HAL_DRIVER",

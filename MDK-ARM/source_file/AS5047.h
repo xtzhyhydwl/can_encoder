@@ -38,8 +38,7 @@
 #define SETTINGS1     0x0018
 #define SETTINGS2     0x0019
 
-#define FILTER_WINDOW_SIZE 10 
-#define FILTER_WINDOW_SIZE 10 
+#define FILTER_WINDOW_SIZE 3
 
 typedef struct {
     GPIO_TypeDef* cs_port;
@@ -70,6 +69,11 @@ uint16_t AS5047_read_reg (uint16_t add, as5047_t* as5047);
 uint16_t SPI_ReadWrite_OneByte (uint16_t txdata, SPI_HandleTypeDef* hspi, GPIO_TypeDef* cs_port, uint16_t cs_pin);
 
 void as5047_read_angle_routine (as5047_t* as5047);  //读角度调用这个，用之前先看库文件说明
+void usDelayTest (void);
+void usDelayOptimize (void);
+void Delay_us (uint32_t Delay);
+
+
 extern as5047_t as5047[4];
 
 #endif
