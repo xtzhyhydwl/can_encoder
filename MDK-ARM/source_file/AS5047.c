@@ -75,7 +75,7 @@ static uint16_t __as5047_mean_filter(uint16_t now_data, __as5047_mean_filter_t* 
 uint16_t SPI_ReadWrite_OneByte (uint16_t txdata, SPI_HandleTypeDef* hspi, GPIO_TypeDef* cs_port, uint16_t cs_pin) {
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_RESET); //拉低片选								
 	uint16_t rxdata;
-	if (HAL_SPI_TransmitReceive(hspi,(uint8_t *)&txdata,(uint8_t *)&rxdata,1,1000) != HAL_OK)
+	if (HAL_SPI_TransmitReceive(hspi,(uint8_t *)&txdata,(uint8_t *)&rxdata,1,1) != HAL_OK)
 		rxdata=0;
 	HAL_GPIO_WritePin(cs_port, cs_pin, GPIO_PIN_SET);  //拉高								
 	return rxdata;

@@ -96,8 +96,6 @@ int main(void)
   MX_TIM16_Init();
   /* USER CODE BEGIN 2 */
   usDelayOptimize();
-  HAL_TIM_Base_Start_IT(&htim15);
-  HAL_TIM_Base_Start_IT(&htim16);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -159,7 +157,7 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
   if (htim->Instance == TIM15) {
-    FDCAN_SendData(&hfdcan1, (uint8_t*)(&as5047[0].angle_now), 0x01, 4);
+    send_angle();
   }
   if (htim->Instance == TIM16) {
     as5047_read_angle_routine(&as5047[0]);
