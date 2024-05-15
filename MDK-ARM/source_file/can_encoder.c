@@ -23,7 +23,7 @@ void paramter_init (void) {
 	if (s->internal_id > 0xff) {
 		s->internal_id = 0x01;
 	}
-	else if (s->internal_id = 0x00) {
+	else if (s->internal_id == 0x00) {
 		s->internal_id = 0x01;
 	}
 
@@ -32,7 +32,7 @@ void paramter_init (void) {
 		arr_value = ARR_MAXIUM_VALUE;
 	}
 	else if (arr_value < ARR_MINIUM_VALUE) {
-		arr_value < ARR_MINIUM_VALUE;
+		arr_value = ARR_MINIUM_VALUE;
 	}
 	TIM15->ARR = arr_value;
   HAL_TIM_Base_Start_IT(&htim15);
@@ -58,7 +58,7 @@ void parameter_reinit (void) {
 		arr_value = ARR_MAXIUM_VALUE;
 	}
 	else if (arr_value < ARR_MINIUM_VALUE) {
-		arr_value < ARR_MINIUM_VALUE;
+		arr_value = ARR_MINIUM_VALUE;
 	}
 	TIM15->ARR = arr_value;
 
@@ -144,12 +144,12 @@ void comman_decoded (uint32_t stdid, uint8_t* rx_data) {
 	bool parameter_changed = false;
 	switch (command) {
 	case COMMAND_CHANGE_FREQ: 
-		memcpy(s->tx_freq, rx_data, 4);
+		memcpy(&s->tx_freq, rx_data, 4);
 		parameter_changed = true;
 		break;
 
 	case COMMAND_CHANGE_BAUDRATE: 
-		memcpy(s->FDCAN_BAUDRATE, rx_data, 4);
+		memcpy(&s->FDCAN_BAUDRATE, rx_data, 4);
 		parameter_changed = true;
 		break;
 
@@ -158,7 +158,7 @@ void comman_decoded (uint32_t stdid, uint8_t* rx_data) {
 		break;
 	}
 	if (parameter_changed) {
-		status_deinit();
+		paramter_deinit();
 
 	}
 }
